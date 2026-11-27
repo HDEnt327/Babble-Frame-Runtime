@@ -943,3 +943,23 @@ TEST_CASE("the Image tab: slider drag sends the tilt, Reset sends only what diff
     open(none, {{"gain", 1.0}, {"tilt_deg", 0}});
     CHECK(none.click(reset).changes.empty());
 }
+
+TEST_CASE("a choice sends whole numbers as integers, so integer-only settings accept them") {
+    Choice level{"/pipelines/gaze/smoothing", "Gaze Smoothing", "", "", {0, 1, 2, 3}};
+    level.value = 2;
+    const nlohmann::json v = choice_setting(level);
+    CHECK(v.is_number_integer());
+    CHECK(v == 2);
+    level.value = 0.5;
+    CHECK(choice_setting(level).is_number_float());
+
+    Choice on{"/dashboard/enabled", "", "", "", {0, 1}};
+    on.boolean = true;
+    on.value = 1;
+    CHECK(choice_setting(on) == true);
+
+    Choice text{"/pipelines/gaze/gaze_source", "", "", "", {0, 1}};
+    text.text_values = {"independent", "combined"};
+    text.value = 1;
+    CHECK(choice_setting(text) == "combined");
+}

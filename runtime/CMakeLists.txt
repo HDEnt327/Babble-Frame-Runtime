@@ -35,7 +35,9 @@ add_library(babble_core STATIC
     src/core/threading.cpp
     src/frame/frame_pool.cpp
     src/camera/eye/dsp_client.cpp
-    src/camera/eye/dsp_eye_source.cpp
+    src/camera/eye/scan/dma_arena.cpp
+    src/camera/eye/scan/eye_ring.cpp
+    src/camera/eye/scan/scan_eye_source.cpp
     src/camera/tracking_source.cpp
     src/camera/face_camera_source.cpp
     src/camera/jpeg_cutter.cpp
@@ -227,7 +229,7 @@ if(BABBLE_TESTS)
         tests/test_vrc_native.cpp
         tests/test_steam_link.cpp
         tests/test_camera_stream.cpp
-        tests/test_eye_pairing.cpp
+        tests/test_eye_scan.cpp
         tests/test_record_sink.cpp
         tests/test_process.cpp
         tests/test_capture_protocol.cpp

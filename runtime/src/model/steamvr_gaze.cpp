@@ -174,9 +174,9 @@ bool SteamVrGaze::set_filter_option(const std::string &key, const nlohmann::json
             double min_cutoff, beta, deadzone;
         } kLevels[] = {{1.0, 3.0, 0.0025}, {0.3, 1.5, 0.005}, {0.15, 1.0, 0.01}};
         const double v = value.get<double>();
-        const int level = int(v);
-        if (v != level || level < 0 || level > 3)
+        if (v < 0 || v > 3 || v != std::trunc(v))
             return false;
+        const int level = int(v);
         if (level != smoothing_)
             LOG.info("pipeline %s: gaze smoothing %d", name_.c_str(), level);
         smoothing_ = level;
