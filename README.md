@@ -65,7 +65,7 @@ dropped in.
 On the Steam Frame, switch to Desktop Mode, open Konsole and paste:
 
 ```
-curl -fsSL https://raw.githubusercontent.com/finaea/Babble-Frame-Runtime/main/tools/get.sh | BABBLE_REPO=finaea/Babble-Frame-Runtime bash
+curl -fsSL https://raw.githubusercontent.com/HDEnt327/Babble-Frame-Runtime/main/tools/get.sh | BABBLE_REPO=HDEnt327/Babble-Frame-Runtime bash
 ```
 
 It downloads the newest release, checks it against the release's SHA-256 checksum, installs it in your home folder and restarts SteamVR. Its settings are in SteamVR Settings, under Expression Tracking. The Babble tab in the SteamVR dashboard is on after you install, and updates appear there next to the version. To hide the tab, turn off Show App Window.
